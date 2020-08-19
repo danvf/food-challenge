@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Header from '../../components/Header';
 
@@ -17,7 +17,11 @@ const Dashboard = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    function getNextId(foods) {
+      nextId = Math.max(...foods.map(food => food.id)) + 1;
+    }
+
     async function fetchItems() {
       const currentFoods = await api.get('/foods');
       setFoods(currentFoods.data);
@@ -27,11 +31,7 @@ const Dashboard = () => {
     fetchItems();
   }, []);
 
-  function getNextId(foods) {
-    nextId = Math.max(...foods.map(food => food.id)) + 1;
-  }
-
-  function checkFoods() {
+  function loadingComplete() {
     return foods !== undefined && foods.length > 0;
   }
 
@@ -41,19 +41,17 @@ const Dashboard = () => {
         ...food,
         id: nextId,
       };
-      let res = await api.post('/foods', newFood);
+      await api.post('/foods', newFood);
     } catch (err) {
       console.log(err);
     }
   }
 
   async function handleUpdateFood(food) {
-    // TODO UPDATE A FOOD PLATE ON THE API
     await api.put('/foods/' + food.id, food);
   }
 
   async function handleDeleteFood(id) {
-    // TODO DELETE A FOOD PLATE FROM THE API
     await api.delete('/foods/' + id);
   }
 
@@ -86,7 +84,7 @@ const Dashboard = () => {
       />
 
       <FoodsContainer data-testid="foods-list">
-        {checkFoods() ? (
+        {loadingComplete() &&
           foods.map(food => (
             <Food
               key={food.id}
@@ -94,10 +92,7 @@ const Dashboard = () => {
               handleDelete={handleDeleteFood}
               handleEditFood={handleEditFood}
             />
-          ))
-        ) : (
-          <h2> carregando... </h2>
-        )}
+          ))}
       </FoodsContainer>
     </>
   );

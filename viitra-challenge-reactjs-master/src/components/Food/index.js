@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { FiEdit3, FiTrash } from 'react-icons/fi';
 
 import { Container } from './styles';
+import api from '../../services/api';
 
 const Food = ({ food, handleDelete, handleEditFood }) => {
   const [isAvailable, setIsAvailable] = useState(food.available);
 
   async function toggleAvailable() {
+    let newFood = { ...food, available: !isAvailable };
     setIsAvailable(!isAvailable);
+    await api.put('/foods/' + food.id, newFood);
   }
 
   function setEditingFood() {
@@ -18,16 +22,18 @@ const Food = ({ food, handleDelete, handleEditFood }) => {
 
   return (
     <Container available={isAvailable}>
-      <header>
-        <img src={food.image} alt={food.name} />
-      </header>
-      <section className="body">
-        <h2>{food.name}</h2>
-        <p>{food.description}</p>
-        <p className="price">
-          R$ <b>{food.price}</b>
-        </p>
-      </section>
+      <Link style={{ textDecoration: 'none' }} to={`/${food.id}`}>
+        <header>
+          <img src={food.image} alt={food.name} />
+        </header>
+        <section className="body">
+          <h2>{food.name}</h2>
+          <p>{food.description}</p>
+          <p className="price">
+            R$ <b>{food.price}</b>
+          </p>
+        </section>
+      </Link>
       <section className="footer">
         <div className="icon-container">
           <button
@@ -39,6 +45,7 @@ const Food = ({ food, handleDelete, handleEditFood }) => {
           </button>
 
           <button
+            renderAs="button"
             type="button"
             className="icon"
             onClick={() => handleDelete(food.id)}
