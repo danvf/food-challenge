@@ -31,8 +31,15 @@ const FoodDetails = ({ match }) => {
     <>
       {loaded && (
         <Container>
-          <header>
-            <img src={food.image} alt={food.name} />
+          <header
+            className="food-bg"
+            style={{
+              backgroundImage: 'url(' + food.image + ')',
+            }}
+          >
+            <div className="bg-filter">
+              <h1 className="viitra-rest">Viitra restaurant</h1>
+            </div>
           </header>
           <section className="body">
             <h1>{food.name}</h1>

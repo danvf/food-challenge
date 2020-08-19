@@ -7,16 +7,25 @@ export const Container = styled.div`
   height: 100vh;
   width: 100%;
 
-  header {
-    background: #ffb84d;
-    height: 192px;
-    overflow: hidden;
-    transition: 0.3s opacity;
-    text-align: center;
+  .food-bg {
+    background-size: cover;
+    background-position-y: 30%;
+    width: 100%;
+    height: 277px;
 
-    img {
-      pointer-events: none;
-      user-select: none;
+    .viitra-rest {
+      color: #ffffff;
+      width: 1280px;
+      height: 57px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+
+    .bg-filter {
+      position: absolute;
+      width: 100%;
+      height: 277px;
+      background: #00000060;
     }
   }
 
