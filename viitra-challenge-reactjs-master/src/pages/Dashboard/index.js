@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 
 import Header from '../../components/Header';
 
@@ -17,7 +17,7 @@ const Dashboard = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     async function fetchItems() {
       const currentFoods = await api.get('/foods');
       setFoods(currentFoods.data);
@@ -49,10 +49,12 @@ const Dashboard = () => {
 
   async function handleUpdateFood(food) {
     // TODO UPDATE A FOOD PLATE ON THE API
+    await api.put('/foods/' + food.id, food);
   }
 
   async function handleDeleteFood(id) {
     // TODO DELETE A FOOD PLATE FROM THE API
+    await api.delete('/foods/' + id);
   }
 
   function toggleModal() {
@@ -64,7 +66,8 @@ const Dashboard = () => {
   }
 
   function handleEditFood(food) {
-    // TODO SET THE CURRENT EDITING FOOD ID IN THE STATE
+    setEditModalOpen(true);
+    setEditingFood(food);
   }
 
   return (

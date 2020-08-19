@@ -29,26 +29,6 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "quantity": 5,
       "timeToCook": "20min"
-    },
-    {
-      "id": 4,
-      "name": "Prato",
-      "description": "Um prato bonito",
-      "price": "20.00",
-      "available": "",
-      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png",
-      "quantity": "",
-      "timeToCook": ""
-    },
-    {
-      "id": 5,
-      "name": "Outro prato",
-      "description": "Outro prato",
-      "price": "14.00",
-      "available": "",
-      "image": "\"https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png\"",
-      "quantity": "",
-      "timeToCook": ""
     }
   ]
 }

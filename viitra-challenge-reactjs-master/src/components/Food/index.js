@@ -8,11 +8,12 @@ const Food = ({ food, handleDelete, handleEditFood }) => {
   const [isAvailable, setIsAvailable] = useState(food.available);
 
   async function toggleAvailable() {
-    // TODO UPDATE STATUS (available)
+    setIsAvailable(!isAvailable);
   }
 
   function setEditingFood() {
-    // TODO - SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+    // SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
+    handleEditFood(food);
   }
 
   return (
