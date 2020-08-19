@@ -23,7 +23,7 @@ const Dashboard = () => {
     }
 
     async function fetchItems() {
-      const currentFoods = await api.get('/foods');
+      let currentFoods = await api.get('/foods');
       setFoods(currentFoods.data);
       getNextId(currentFoods.data);
     }
@@ -70,7 +70,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header openModal={toggleModal} />
+      <Header openModal={toggleModal} withButton={true} />
       <ModalAddFood
         isOpen={modalOpen}
         setIsOpen={toggleModal}

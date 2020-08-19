@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from '../../components/Header';
+
 import api from '../../services/api';
 
 import {
@@ -29,18 +31,15 @@ const FoodDetails = ({ match }) => {
 
   return (
     <>
+      <Header withButton={false} />
       {loaded && (
         <Container>
-          <header
+          <div
             className="food-bg"
             style={{
               backgroundImage: 'url(' + food.image + ')',
             }}
-          >
-            <div className="bg-filter">
-              <h1 className="viitra-rest">Viitra restaurant</h1>
-            </div>
-          </header>
+          />
           <section className="body">
             <h1>{food.name}</h1>
             <div className="h-divider" />

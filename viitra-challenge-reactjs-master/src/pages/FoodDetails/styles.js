@@ -4,14 +4,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  height: 100vh;
   width: 100%;
 
   .food-bg {
     background-size: cover;
     background-position-y: 30%;
-    width: 100%;
+    width: 277px;
     height: 277px;
+    border-radius: 100%;
+    margin: 0px auto;
+    margin-top: -140px;
 
     .viitra-rest {
       color: #ffffff;
@@ -34,7 +36,6 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 30px;
 
     h1 {
       color: #3d3d4d;

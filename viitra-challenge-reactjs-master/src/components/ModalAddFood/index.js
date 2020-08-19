@@ -14,7 +14,7 @@ const ModalAddFood = ({ isOpen, setIsOpen, handleAddFood }) => {
       name: '',
       description: '',
       price: '',
-      available: '',
+      available: true,
       image: '',
       quantity: '',
       timeToCook: '',
@@ -28,12 +28,24 @@ const ModalAddFood = ({ isOpen, setIsOpen, handleAddFood }) => {
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <h1>Novo Prato</h1>
-        <Input name="image" placeholder="Cole o link aqui" />
-
-        <Input name="name" placeholder="Ex: Moda Italiana" />
-        <Input name="price" placeholder="Ex: 19.90" />
-
-        <Input name="description" placeholder="Descrição" />
+        <Input
+          inputLabel="Imagem"
+          name="image"
+          placeholder="Cole o link aqui"
+        />
+        <Input inputLabel="Nome" name="name" placeholder="Ex: Moda Italiana" />
+        <Input inputLabel="Preço" name="price" placeholder="Ex: 19.90" />
+        <Input inputLabel="Quantidade" name="quantity" placeholder="Ex: 4" />
+        <Input
+          inputLabel="Tempo para Cozinhar"
+          name="timeToCook"
+          placeholder="Ex: 14min"
+        />
+        <Input
+          inputLabel="Descrição"
+          name="description"
+          placeholder="Descrição"
+        />
         <button>
           <p className="text">Adicionar Prato</p>
           <div className="icon">

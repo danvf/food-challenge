@@ -12,6 +12,10 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
 
+    h1 {
+      height: 57px;
+    }
+
     nav {
       div {
         button {
