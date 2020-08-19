@@ -11,14 +11,37 @@ import ModalEditFood from '../../components/ModalEditFood';
 import { FoodsContainer } from './styles';
 
 const Dashboard = () => {
+  let nextId = 0;
   const [foods, setFoods] = useState([]);
   const [editingFood, setEditingFood] = useState();
   const [modalOpen, setModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
+  useEffect(() => {
+    async function fetchItems() {
+      const currentFoods = await api.get('/foods');
+      setFoods(currentFoods.data);
+      getNextId(currentFoods.data);
+    }
+
+    fetchItems();
+  }, []);
+
+  function getNextId(foods) {
+    nextId = Math.max(...foods.map(food => food.id)) + 1;
+  }
+
+  function checkFoods() {
+    return foods !== undefined && foods.length > 0;
+  }
+
   async function handleAddFood(food) {
     try {
-      // TODO ADD A NEW FOOD PLATE TO THE API
+      const newFood = {
+        ...food,
+        id: nextId,
+      };
+      let res = await api.post('/foods', newFood);
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +83,7 @@ const Dashboard = () => {
       />
 
       <FoodsContainer data-testid="foods-list">
-        {foods &&
+        {checkFoods() ? (
           foods.map(food => (
             <Food
               key={food.id}
@@ -68,7 +91,10 @@ const Dashboard = () => {
               handleDelete={handleDeleteFood}
               handleEditFood={handleEditFood}
             />
-          ))}
+          ))
+        ) : (
+          <h2> carregando... </h2>
+        )}
       </FoodsContainer>
     </>
   );

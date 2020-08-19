@@ -9,7 +9,19 @@ const ModalAddFood = ({ isOpen, setIsOpen, handleAddFood }) => {
   const formRef = useRef(null);
 
   function handleSubmit(data) {
-    // TODO ADD A NEW FOOD AND CLOSE THE MODAL
+    let newFood = {
+      id: '',
+      name: '',
+      description: '',
+      price: '',
+      available: '',
+      image: '',
+      quantity: '',
+      timeToCook: '',
+      ...data,
+    };
+    handleAddFood(newFood);
+    setIsOpen(false);
   }
 
   return (
