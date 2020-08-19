@@ -29,6 +29,16 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "quantity": 5,
       "timeToCook": "20min"
+    },
+    {
+      "id": 4,
+      "name": "Brigadeiro",
+      "description": "Feito de chocolate belga com granulado colorido.",
+      "price": "2.00",
+      "available": "",
+      "image": "https://www.emporiodocesesalgados.com.br/wp-content/uploads/2019/03/brigadeiro.jpg",
+      "quantity": "",
+      "timeToCook": ""
     }
   ]
 }
