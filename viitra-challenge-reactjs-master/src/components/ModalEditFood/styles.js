@@ -13,6 +13,12 @@ export const Form = styled(Unform)`
     margin-bottom: 40px;
   }
 
+  .form-container {
+    max-height: 400px;
+    overflow-y: scroll;
+    padding-right: 20px;
+  }
+
   button {
     margin-top: 48px;
     align-self: flex-end;
