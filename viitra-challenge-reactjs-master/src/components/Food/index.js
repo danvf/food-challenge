@@ -11,12 +11,11 @@ const Food = ({ food, handleDelete, handleEditFood }) => {
 
   async function toggleAvailable() {
     let newFood = { ...food, available: !isAvailable };
-    setIsAvailable(!isAvailable);
     await api.put('/foods/' + food.id, newFood);
+    setIsAvailable(!isAvailable);
   }
 
   function setEditingFood() {
-    // SET THE ID OF THE CURRENT ITEM TO THE EDITING FOOD AND OPEN MODAL
     handleEditFood(food);
   }
 

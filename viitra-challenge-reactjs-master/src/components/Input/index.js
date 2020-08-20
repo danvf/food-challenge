@@ -9,7 +9,7 @@ const Input = ({ name, icon: Icon, inputLabel, ...rest }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const { fieldName, defaultValue, registerField } = useField(name);
+  const { fieldName, defaultValue, registerField, error } = useField(name);
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
@@ -31,7 +31,14 @@ const Input = ({ name, icon: Icon, inputLabel, ...rest }) => {
 
   return (
     <>
-      <label style={{ margin: '4px 0' }}>{inputLabel}</label>
+      <label>{inputLabel}</label>
+      <div style={{ height: '20px' }}>
+        {error && (
+          <h6 style={{ color: '#C72828' }}>
+            Campo não preenchido ou preenchido de maneira incorreta!!!
+          </h6>
+        )}
+      </div>
       <Container isFilled={isFilled} isFocused={isFocused}>
         {Icon && <Icon size={20} />}
         <input

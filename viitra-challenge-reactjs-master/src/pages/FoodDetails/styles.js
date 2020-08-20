@@ -6,7 +6,7 @@ export const Container = styled.div`
   border-radius: 8px;
   width: 100%;
 
-  .food-bg {
+  .food-img {
     background-size: cover;
     background-position-y: 30%;
     width: 277px;
@@ -14,21 +14,6 @@ export const Container = styled.div`
     border-radius: 100%;
     margin: 0px auto;
     margin-top: -140px;
-
-    .viitra-rest {
-      color: #ffffff;
-      width: 1280px;
-      height: 57px;
-      margin: 0 auto;
-      margin-top: 30px;
-    }
-
-    .bg-filter {
-      position: absolute;
-      width: 100%;
-      height: 277px;
-      background: #00000060;
-    }
   }
 
   section.body {
@@ -72,6 +57,7 @@ export const Container = styled.div`
       }
     }
   }
+
   button {
     margin-top: 60px;
     font-weight: 600;

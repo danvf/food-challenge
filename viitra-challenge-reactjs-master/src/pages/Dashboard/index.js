@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import Header from '../../components/Header';
 
@@ -11,7 +11,7 @@ import ModalEditFood from '../../components/ModalEditFood';
 import { FoodsContainer } from './styles';
 
 const Dashboard = () => {
-  let nextId = 0;
+  let nextIdRef = useRef(0);
   const [foods, setFoods] = useState([]);
   const [editingFood, setEditingFood] = useState();
   const [modalOpen, setModalOpen] = useState(false);
@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     function getNextId(foods) {
-      nextId = Math.max(...foods.map(food => food.id)) + 1;
+      nextIdRef.current = Math.max(...foods.map(food => food.id)) + 1;
     }
 
     async function fetchItems() {
@@ -39,7 +39,7 @@ const Dashboard = () => {
     try {
       const newFood = {
         ...food,
-        id: nextId,
+        id: nextIdRef.current,
       };
       await api.post('/foods', newFood);
     } catch (err) {

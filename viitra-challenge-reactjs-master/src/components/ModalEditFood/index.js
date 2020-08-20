@@ -1,5 +1,5 @@
-import React, { useRef, useCallback } from 'react';
-
+import React, { useRef } from 'react';
+import * as Yup from 'yup';
 import { FiCheckSquare } from 'react-icons/fi';
 import { Form } from './styles';
 import Modal from '../Modal';
@@ -13,21 +13,49 @@ const ModalEditFood = ({
 }) => {
   const formRef = useRef(null);
 
-  function handleSubmit(data) {
-    // EDIT A FOOD PLATE AND CLOSE THE MODAL
-    let newFood = {
-      id: editingFood.id,
-      name: '',
-      description: '',
-      price: '',
-      available: '',
-      image: '',
-      quantity: '',
-      timeToCook: '',
-      ...data,
-    };
-    handleUpdateFood(newFood);
-    setIsOpen(false);
+  async function handleSubmit(data) {
+    try {
+      formRef.current.setErrors({});
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required(),
+        description: Yup.string().min(42).required(),
+        price: Yup.string()
+          .matches(/\d+\.\d\d/)
+          .required(),
+        image: Yup.string().url().required(),
+        quantity: Yup.number().positive().required(),
+        timeToCook: Yup.string()
+          .matches(/^\d+min\b|^\d+h\b/)
+          .required(),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      let newFood = {
+        id: editingFood.id,
+        name: '',
+        description: '',
+        price: '',
+        available: editingFood.available,
+        image: '',
+        quantity: '',
+        timeToCook: '',
+        ...data,
+      };
+      handleUpdateFood(newFood);
+      setIsOpen(false);
+    } catch (err) {
+      const validationErrors = {};
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+        formRef.current.setErrors(validationErrors);
+      }
+    }
   }
 
   return (

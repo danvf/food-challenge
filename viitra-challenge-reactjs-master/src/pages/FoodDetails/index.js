@@ -27,7 +27,7 @@ const FoodDetails = ({ match }) => {
     }
 
     fetchItems();
-  }, []);
+  }, [match]);
 
   return (
     <>
@@ -35,7 +35,7 @@ const FoodDetails = ({ match }) => {
       {loaded && (
         <Container>
           <div
-            className="food-bg"
+            className="food-img"
             style={{
               backgroundImage: 'url(' + food.image + ')',
             }}

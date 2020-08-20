@@ -4,7 +4,7 @@ export const Container = styled.div`
   background: #f0f0f5;
   border-radius: 8px;
   width: 400px;
-  margin: 20px 0;
+  margin: 20px auto;
 
   header {
     background: #ffb84d;
