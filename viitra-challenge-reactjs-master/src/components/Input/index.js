@@ -31,7 +31,7 @@ const Input = ({ name, icon: Icon, inputLabel, ...rest }) => {
 
   return (
     <>
-      <label>{inputLabel}</label>
+      <label style={{ marginTop: '8px' }}>{inputLabel}</label>
       <div style={{ height: '20px' }}>
         {error && (
           <h6 style={{ color: '#C72828' }}>

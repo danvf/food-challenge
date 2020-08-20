@@ -29,36 +29,6 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png",
       "quantity": "5",
       "timeToCook": "20min"
-    },
-    {
-      "id": 4,
-      "name": "Brigalib",
-      "description": "Feito de chocolate belga com granulado de chocolate.",
-      "price": "17.00",
-      "available": true,
-      "image": "https://www.emporiodocesesalgados.com.br/wp-content/uploads/2019/03/brigadeiro.jpg",
-      "quantity": "9",
-      "timeToCook": "32min"
-    },
-    {
-      "id": 5,
-      "name": "Hambúrger da Vida",
-      "description": "Hambúger contendo queijo cheddar vegano, cebola caramelizada e gergelim.",
-      "price": "20.00",
-      "available": true,
-      "image": "https://img.vixdata.io/pd/jpg-large/pt/sites/default/files/bdm/field/image/fast-food.jpg",
-      "quantity": "4",
-      "timeToCook": "1h"
-    },
-    {
-      "id": 6,
-      "name": "Hambúrger da morte",
-      "description": "Hambúrger de fast food mergulhado no óleo feito com muita gordura trans.",
-      "price": "14.00",
-      "available": true,
-      "image": "https://img.vixdata.io/pd/jpg-large/pt/sites/default/files/bdm/field/image/fast-food.jpg",
-      "quantity": "2",
-      "timeToCook": "12min"
     }
   ]
 }
