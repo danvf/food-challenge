@@ -17,6 +17,15 @@ export const Form = styled(Unform)`
     max-height: 400px;
     overflow-y: scroll;
     padding-right: 20px;
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 30px;
+      background: #c5c5c5;
+    }
   }
 
   button {
